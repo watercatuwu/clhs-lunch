@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html data-bs-theme="dark">
+<html lang="zh-tw" data-bs-theme="dark">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLHS Lunch</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,9 +41,9 @@
         <div class="row my-4">
             <div class="col-3"></div>
             <div class="col-6">
-                <a class="disabled icon-link icon-link-hover" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="#">
-                    <i class="bi bi-cart" ></i>
-                    點餐表單(尚未開放)
+                <a id="form" class="disabled icon-link icon-link-hover" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="#">
+                    <i class="bi bi-cart"></i>
+                    點餐表單
                 </a>
                 <a class="icon-link icon-link-hover" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="https://forms.gle/M465WuipyKM8HEqu9">
                     <i class="bi bi-bug"></i>
@@ -73,6 +75,11 @@
             <div class="col"></div>
         </div>
     </div>
+    <footer class="">
+        <div class="text-center">
+            <p>資料來源 CLHS午餐訂餐系統</p>
+            <p> Copyright © 2024 watercatuwu</p>
+        </div>
 </body>
 <template id="table-row">
         <tr>
@@ -87,15 +94,21 @@
         let select = document.querySelector("#dayselect").value; // get select value
         document.getElementById("dayselect").disabled = true; //disable select
         document.getElementById("spinner").classList.remove("visually-hidden")
-        // foodtable-genarator
+        document.getElementById("form").classList.add("disabled")
+        
         let t = document.querySelector("#table-row");
         let td = t.content.querySelectorAll("td");
         let th = t.content.querySelector("th");
         let tb = document.querySelector("#foodtablebody");
+        tb.innerHTML="";
 
-        tb.innerHTML=""
+        let formdata = await getdata("form")
+        document.getElementById("form").href = formdata[select];
+        // foodtable-genarator
+        
+
         //clean tbody
-        let data = await getdata()
+        let data = await getdata("table")
         for(let i = 0; i < data[select].length ; i++){
         th.textContent = data[select][i][0];
         td[0].textContent = data[select][i][1];
@@ -105,13 +118,17 @@
         } // 逐行寫入
         document.getElementById("dayselect").disabled = false;
         document.getElementById("spinner").classList.add("visually-hidden")
+        if (select !== "uwu"){ 
+            document.getElementById("form").classList.remove("disabled")
+        }
     }
 
 
-    async function getdata() {
-        const url = "https://script.google.com/macros/s/AKfycbwIhrFIX5vgPjjheFcE8cAPHIFCjfKGrNj3sfXa2HZj0AF6jRmMm17cyra5JACJ71kIvQ/exec"
+    async function getdata(type) {
+        const url = `https://script.google.com/macros/s/AKfycby_-Z5qWZO62q9O6vES2x5BmyyWLAN2JVTeFRksleKroAbTvJyfjLifysYLEV2Ly2n06g/exec?type=${type}`
         let response = await fetch(url);
         responsejson = await response.json();
+        console.log(responsejson)
         return responsejson
     } // 讀取json
 </script>
