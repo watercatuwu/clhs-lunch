@@ -39,22 +39,22 @@
             </div>
         </div>
         <div class="row my-4">
-            <div class="col-3"></div>
-            <div class="col-6">
-                <a id="form" class="disabled icon-link icon-link-hover" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="#">
+            <div class="col-md-3 col-sm-2"></div>
+            <div class="d-flex col-md-6 col-sm-8 justify-content-center">
+                <a id="form" class="disabled icon-link icon-link-hover mx-2" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="#">
                     <i class="bi bi-cart"></i>
                     點餐表單
                 </a>
-                <a class="icon-link icon-link-hover" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="https://forms.gle/M465WuipyKM8HEqu9">
+                <a class="icon-link icon-link-hover mx-2" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="https://forms.gle/M465WuipyKM8HEqu9">
                     <i class="bi bi-bug"></i>
                     Bug回報
                 </a>
             </div>
-            <div class="col-3"></div>
+            <div class="col-md-3 col-sm-2"></div>
         </div>
         <div class="row my-4">
-            <div class="col"></div>
-            <div class="table-responsive-sm col-lg-6 col-sm-8 p-3 border border-2 rounded-2">
+            <div class="col-md-3 col-sm-2"></div>
+            <div class="table-responsive-sm col-md-6 col-sm-8 p-3 border border-1 rounded-2">
                 <table id="foodtable" class="table table-hover">
                     <thead>
                         <tr>
@@ -72,13 +72,16 @@
                     <tbody id="foodtablebody"></tbody>
                 </table>
             </div>
-            <div class="col"></div>
+            <div class="col-md-3 col-sm-2"></div>
         </div>
     </div>
-    <footer class="">
+    <footer class="py-2">
         <div class="text-center">
-            <p>資料來源 CLHS午餐訂餐系統</p>
-            <p> Copyright © 2024 watercatuwu</p>
+            <a class="icon-link icon-link-hover text-secondary-emphasis" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="https://github.com/watercatuwu/clhs-lunch">
+                <i class="bi bi-github"></i>
+                github
+            </a>
+            <p class="text-secondary-emphasis">ver. beta</p>
         </div>
 </body>
 <template id="table-row">
@@ -89,47 +92,5 @@
         </tr>
 </template>
 
-<script>
-    async function selectday(){
-        let select = document.querySelector("#dayselect").value; // get select value
-        document.getElementById("dayselect").disabled = true; //disable select
-        document.getElementById("spinner").classList.remove("visually-hidden")
-        document.getElementById("form").classList.add("disabled")
-        
-        let t = document.querySelector("#table-row");
-        let td = t.content.querySelectorAll("td");
-        let th = t.content.querySelector("th");
-        let tb = document.querySelector("#foodtablebody");
-        tb.innerHTML="";
-
-        let formdata = await getdata("form")
-        document.getElementById("form").href = formdata[select];
-        // foodtable-genarator
-        
-
-        //clean tbody
-        let data = await getdata("table")
-        for(let i = 0; i < data[select].length ; i++){
-        th.textContent = data[select][i][0];
-        td[0].textContent = data[select][i][1];
-        td[1].textContent = data[select][i][2];
-        let clone = document.importNode(t.content, true);
-        tb.appendChild(clone);
-        } // 逐行寫入
-        document.getElementById("dayselect").disabled = false;
-        document.getElementById("spinner").classList.add("visually-hidden")
-        if (select !== "uwu"){ 
-            document.getElementById("form").classList.remove("disabled")
-        }
-    }
-
-
-    async function getdata(type) {
-        const url = `https://script.google.com/macros/s/AKfycby_-Z5qWZO62q9O6vES2x5BmyyWLAN2JVTeFRksleKroAbTvJyfjLifysYLEV2Ly2n06g/exec?type=${type}`
-        let response = await fetch(url);
-        responsejson = await response.json();
-        console.log(responsejson)
-        return responsejson
-    } // 讀取json
-</script>
+<script src="./scripts.js"></script>
 </html>
