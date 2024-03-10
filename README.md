@@ -8,6 +8,7 @@ https://sites.google.com/view/clhs-lunch/v-2-0
 
 # 預覽圖
 <img src="https://cdn.discordapp.com/attachments/1046603288251990099/1216188996191780945/Screenshot_2024-03-10-09-00-39-54_e4424258c8b8649f6e67d283a50a2cbc.jpg?ex=65ff7b44&is=65ed0644&hm=5444f9a740961d801c8f95caf3e73a4f7382a18ac8beeae5ba56f2009a27be99&" width=300px>
+
 # 特點
 
 - 操作直覺:沒有多餘的按鈕
