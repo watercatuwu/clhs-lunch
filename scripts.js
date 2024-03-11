@@ -14,7 +14,9 @@ async function selectday(){
     document.getElementById("form").href = formdata[select];
 
     // table-genarator
-    let data = await getdata("table")
+    let data = await getfood();
+    data[select].push(["+","加飯", 0])
+    data[select].push(["＋","加麵", 0])
     for(let i = 0; i < data[select].length ; i++){
     th.textContent = data[select][i][0];
     td[0].textContent = data[select][i][1];
@@ -31,9 +33,15 @@ async function selectday(){
 
 
 async function getdata(type) {
-    const url = `https://script.google.com/macros/s/AKfycby_-Z5qWZO62q9O6vES2x5BmyyWLAN2JVTeFRksleKroAbTvJyfjLifysYLEV2Ly2n06g/exec?type=${type}`
+    const url = `https://script.google.com/macros/s/AKfycbxwgKVwnnRKiJqPexq7YWafNlz7FZVNTQ6GSHdyYAWvgthkcZdeEqTGeaIy11iwbTelTQ/exec?type=${type}`
     let response = await fetch(url);
-    responsejson = await response.json();
+    let responsejson = await response.json();
     console.log(responsejson)
     return responsejson
-} // read json from googlesheet
+
+}
+async function getfood() {
+    const url = "https://clhslunchapi.watercat0330.workers.dev/"
+    let response = await fetch(url);
+    return await response.json()
+}

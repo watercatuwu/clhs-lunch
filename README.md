@@ -26,35 +26,15 @@
 
 # 午餐資料api
 
-這邊提供想要自己寫前端的同學api使用
-
 資料都是開發CLHS午餐訂餐系統的同學手key而來
-
-我只是用爬蟲抓下來並輸出成json方便使用
-
-都是以GET的方式去取得資料
 
 ## 每日午餐表格
 
-`https://script.google.com/macros/s/AKfycby_-Z5qWZO62q9O6vES2x5BmyyWLAN2JVTeFRksleKroAbTvJyfjLifysYLEV2Ly2n06g/exec?type=table`
+`https://clhslunchapi.watercat0330.workers.dev/`
 
-```
-{
-"mon":[["1","品項名稱","價格"],["2","品項名稱","價格"]],
-"tue":[["1","品項名稱","價格"],["2","品項名稱","價格"]]
-}
-```
+這個api是cloudflare workers每12小時從學校午餐系統抓資料，然後解析成容易讀取的json格式，存到cloudflare KV作為緩存，再用cloudflare workers輸出json資料
 
-## 表單連結
-
-`https://script.google.com/macros/s/AKfycby_-Z5qWZO62q9O6vES2x5BmyyWLAN2JVTeFRksleKroAbTvJyfjLifysYLEV2Ly2n06g/exec?type=form`
-
-```
-{
-"mon":"https://docs.google.com/forms/d/e/...",
-"tue":"https://docs.google.com/forms/d/e/..."
-}
-```
+這樣可以加快讀取速度
 
 # 感謝
 
