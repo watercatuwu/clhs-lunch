@@ -26,15 +26,15 @@
 
 # 午餐資料api
 
-這邊分享我找網頁原始碼抓到的api
-
 資料都是開發CLHS午餐訂餐系統的同學手key而來
 
 ## 每日午餐表格
 
-`https://script.google.com/macros/s/AKfycbzUe-kVJmPLHRvF-ePH_IYlfWQd8o-oX0H1f3NTIygSrug_fiv_7jniyFBTjnUd9zdx/exec`
+`https://clhslunchapi.watercat0330.workers.dev/`
 
-解析的部分可以參考scripts.js中的`getfood()`函式
+這個api是cloudflare workers每12小時從學校午餐系統抓資料，然後解析成容易讀取的json格式，存到cloudflare KV作為緩存，再用cloudflare workers輸出json資料
+
+這樣可以加快讀取速度
 
 # 感謝
 
