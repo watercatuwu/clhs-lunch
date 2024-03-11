@@ -24,18 +24,6 @@
 
 減少紙張和時間的浪費並且成為地球超人
 
-# 午餐資料api
-
-資料都是開發CLHS午餐訂餐系統的同學手key而來
-
-## 每日午餐表格
-
-`https://clhslunchapi.watercat0330.workers.dev/`
-
-這個api是cloudflare workers每12小時從學校午餐系統抓資料，然後解析成容易讀取的json格式，存到cloudflare KV作為緩存，再用cloudflare workers輸出json資料
-
-這樣可以加快讀取速度
-
 # 感謝
 
 [CLHS午餐訂餐系統](https://sites.google.com/view/clhs-lunch/v-2-0)
