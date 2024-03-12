@@ -45,3 +45,20 @@ async function getfood() {
     let response = await fetch(url);
     return await response.json()
 }
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms))
+}
+
+async function choose(){
+    let main = ["1","2","3","4","5","6","7","8","①","②","③"]
+    let drinks = ["A","B","C","水","手搖"]
+    document.getElementById("choosebtn").classList.add("disabled")
+    for (let i = 0; i < 5; i++) {
+    document.getElementById("choice").innerText = (`吃${main[Math.floor(Math.random() * main.length)]}喝${drinks[Math.floor(Math.random() * drinks.length)]}`)
+    await sleep(100)
+    }
+    await sleep(500)
+    document.getElementById("choosebtn").classList.remove("disabled")
+    document.getElementById("choosebtn").innerHTML = `<i class="bi bi-arrow-clockwise"></i>再選一次?`
+}
