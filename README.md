@@ -1,4 +1,4 @@
-# CLHS Lunch by watercatuwu
+# LunCLHS
 
 先附上來源
 [CLHS午餐訂餐系統](https://sites.google.com/view/clhs-lunch/v-2-0)
@@ -23,6 +23,16 @@
 期待有生之年熱食部可以電子化
 
 減少紙張和時間的浪費並且成為地球超人
+
+## API
+
+- 最後更新時間: `https://lunclhs.watercatuwu.workers.dev/`
+
+- 每日餐點表格: `https://lunclhs.watercatuwu.workers.dev/?type=table`
+
+- 點餐表單: `https://lunclhs.watercatuwu.workers.dev/?type=form`
+
+- 統計表格: `https://lunclhs.watercatuwu.workers.dev/?type=statistic`
 
 ## 流程圖
 

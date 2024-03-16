@@ -33,7 +33,7 @@ async function selectday(){
 
 
 async function getdata(type) {
-    const url = `https://clhslunchapi.watercatuwu.workers.dev/?type=${type}`
+    const url = `https://lunclhs.watercatuwu.workers.dev/?type=${type}`
     let response = await fetch(url);
     return await response.json();
 
