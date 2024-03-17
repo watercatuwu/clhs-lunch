@@ -34,6 +34,8 @@
 
 - 統計表格: `https://lunclhs.watercatuwu.workers.dev/?type=statistic`
 
+> 注意:這個api是跑在cloudflare上面的，所以每日有請求限制，如果要大量請求可以將worker.js複製到自己的cloudflare workers部署
+
 ## 流程圖
 
 ![](https://cdn.discordapp.com/attachments/1046603288251990099/1218553186571518022/flow.png?ex=66081517&is=65f5a017&hm=7651d337923ca8bb91aaaf30ef65295869b6ca144b46274006a5f073b70d4bd8&)
