@@ -18,9 +18,9 @@ async function selectday(){
     data[select].push(["+","加飯", 0])
     data[select].push(["＋","加麵", 0])
     for(let i = 0; i < data[select].length ; i++){
-    th.textContent = data[select][i][0];
-    td[0].textContent = data[select][i][1];
-    td[1].textContent = data[select][i][2];
+    th.textContent = data[select][i].code;
+    td[0].textContent = data[select][i].name;
+    td[1].textContent = data[select][i].price;
     let clone = document.importNode(t.content, true);
     tb.appendChild(clone);
     } // 逐行寫入
