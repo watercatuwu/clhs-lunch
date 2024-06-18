@@ -1,4 +1,5 @@
-## 有用vue新寫一個
+## 更新
+有用vue新寫一個
 [Lunclhs next](https://github.com/watercatuwu/lunclhsnext)
 
 # LunCLHS
